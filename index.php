@@ -17,15 +17,15 @@
         <h1>Регистрация</h1>  
         <form id="regForm" novalidate>
             <input type="text" class="form-control" name="login" id="login" placeholder="Введите логин">
-            <p><span id="loginMes"></span></p>
+            <p><span id="loginMes" style="color:red"></span></p>
             <input type="password" class="form-control" name="password1" id="password1" placeholder="Введите пароль">
-            <p></p>
+            <p><span id="passwordMes1" style="color:red"></span></p>
             <input type="password" class="form-control" name="password2" id="password2" placeholder="Введите пароль еще раз">
-            <p><span id="passwordMes"></span></p>
+            <p><span id="passwordMes2" style="color:red"></span></p>
             <input type="text" class="form-control" name="name" id="name" placeholder="Имя">
-            <p><span id="nameMes"></span></p>
+            <p><span id="nameMes" style="color:red"></span></p>
             <input type="email" class="form-control" name="email" id="email" placeholder="эл. почта">
-            <p><span id="emailMes"></span></p>
+            <p><span id="emailMes" style="color:red"></span></p>
             <button class="btn btn-success" type="submit">Завершить регистрацию</button>
         </form><br>
         <h1>Авторизация</h1>  
@@ -58,7 +58,18 @@
                 url: "php/registration.php",
                 data: JSON.stringify(user), // serializes the form's elements.
                 success: function(data) {
-                    alert(data); // show response from the php script.
+                    //alert(data); // show response from the php script.
+                    console.log(data);
+                    var response = JSON.parse(data);
+                    console.log(response);
+                    $("#regForm span").each(function( index ) {
+                        $( this ).text("");
+                    });
+                    $("#regForm #loginMes").text(response["login"]);
+                    $("#regForm #passwordMes1").text(response["password1"]);
+                    $("#regForm #passwordMes2").text(response["password2"]);
+                    $("#regForm #nameMes").text(response["name"]);
+                    $("#regForm #emailMes").text(response["email"]);
                 },
                 caches:false,
             });
