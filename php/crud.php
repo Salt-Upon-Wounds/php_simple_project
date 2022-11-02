@@ -1,4 +1,5 @@
 <?php
+
 class CRUD {
     private $db;
 
@@ -19,10 +20,11 @@ class CRUD {
         return json_decode(file_get_contents($this->db, true));
     }
     public function update($data) {
-        return $this->create(array_push($this->read(), $data));
+        $db_data = $this->read();
+        array_push($db_data, $data);
+        $this->create($db_data);
     }
     public function delete() {
         $this->create([]);
     }
 }
-?>

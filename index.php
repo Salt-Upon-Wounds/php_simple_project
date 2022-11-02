@@ -1,6 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
+<?php
+//session
+?>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -9,54 +10,61 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <title>My Website</title>
-  </head>
-  <body>
-    <main>
-        <div class="container mt-4">
-            <h1>Регистрация</h1>  
-            <form id="regForm">
-                <input type="text" class="form-control" name="login" id="login" placeholder="Введите логин">
-                <p><span id="loginMes"></span></p>
-                <input type="password" class="form-control" name="password1" id="password1" placeholder="Введите пароль">
-                <input type="password" class="form-control" name="password2" id="password2" placeholder="Введите пароль еще раз">
-                <p><span id="passwordMes"></span></p>
-                <input type="text" class="form-control" name="name" id="name" placeholder="Имя">
-                <p><span id="nameMes"></span></p>
-                <input type="email" class="form-control" name="email" id="email" placeholder="эл. почта">
-                <p><span id="emailMes"></span></p>
-                <button class="btn btn-success" type="submit">Завершить регистрацию</button>
-            </form><br>
-            <h1>Авторизация</h1>  
-            <form action="" method="POST">
-                <input type="text" class="form-control" name="login" id="login" placeholder="Введите логин">
-                <p><span id="authLoginMes"></span></p>
-                <input type="password" class="form-control" name="password" id="password" placeholder="Введите пароль">
-                <p><span id="authPasswordMes"></span></p>
-                <button class="btn btn-success" type="submit">Завершить авторизацию</button>
-            </form>
-        </div>
-    </main>
+</head>
+<body>
+<main>
+    <div class="container mt-4">
+        <h1>Регистрация</h1>  
+        <form id="regForm">
+            <input type="text" class="form-control" name="login" id="login" placeholder="Введите логин">
+            <p><span id="loginMes"></span></p>
+            <input type="password" class="form-control" name="password1" id="password1" placeholder="Введите пароль">
+            <p></p>
+            <input type="password" class="form-control" name="password2" id="password2" placeholder="Введите пароль еще раз">
+            <p><span id="passwordMes"></span></p>
+            <input type="text" class="form-control" name="name" id="name" placeholder="Имя">
+            <p><span id="nameMes"></span></p>
+            <input type="email" class="form-control" name="email" id="email" placeholder="эл. почта">
+            <p><span id="emailMes"></span></p>
+            <button class="btn btn-success" type="submit">Завершить регистрацию</button>
+        </form><br>
+        <h1>Авторизация</h1>  
+        <form id="authForm">
+            <input type="text" class="form-control" name="login" id="login" placeholder="Введите логин">
+            <p><span id="LoginMes"></span></p>
+            <input type="password" class="form-control" name="password" id="password" placeholder="Введите пароль">
+            <p><span id="PasswordMes"></span></p>
+            <button class="btn btn-success" type="submit">Завершить авторизацию</button>
+        </form>
+    </div>
+</main>
 
-    <script>
-        $(document).ready(function() {
-            $("#regForm").submit(function(e) {
+<script>
+    $(document).ready(function() {
+        $("#regForm").submit(function(e) {
 
-                e.preventDefault(); // avoid to execute the actual submit of the form.
+            e.preventDefault(); // avoid to execute the actual submit of the form.
 
-                var form = $(this);
-
-                $.ajax({
-                    type: "POST",
-                    url: "crud.php",
-                    data: form.serialize(), // serializes the form's elements.
-                    success: function(data) {
-                        //alert(data); // show response from the php script.
-                    },
-                    caches:false,
-                });
-
+            var form = $(this);
+            var user = {
+                login: $("#regForm > #login").val(),
+                password1: $("#regForm > #password1").val(),
+                password2: $("#regForm > #password2").val(),
+                name: $("#regForm > #name").val(),
+                email: $("#regForm > #email").val(),
+            };
+            $.ajax({
+                type: "POST",
+                url: "php/registration.php",
+                data: JSON.stringify(user), // serializes the form's elements.
+                success: function(data) {
+                    alert(data); // show response from the php script.
+                },
+                caches:false,
             });
+
         });
-    </script>
-  </body>
-</html>
+    });
+</script>
+</body>
+
