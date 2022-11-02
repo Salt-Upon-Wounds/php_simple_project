@@ -27,4 +27,8 @@ class CRUD {
     public function delete() {
         $this->create([]);
     }
+
+    public function isUnique($data, $field_name) {
+        return in_array($data, array_column($this->read(), $field_name));
+    }
 }

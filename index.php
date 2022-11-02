@@ -15,7 +15,7 @@
 <main>
     <div class="container mt-4">
         <h1>Регистрация</h1>  
-        <form id="regForm">
+        <form id="regForm" novalidate>
             <input type="text" class="form-control" name="login" id="login" placeholder="Введите логин">
             <p><span id="loginMes"></span></p>
             <input type="password" class="form-control" name="password1" id="password1" placeholder="Введите пароль">
@@ -29,7 +29,7 @@
             <button class="btn btn-success" type="submit">Завершить регистрацию</button>
         </form><br>
         <h1>Авторизация</h1>  
-        <form id="authForm">
+        <form id="authForm" novalidate>
             <input type="text" class="form-control" name="login" id="login" placeholder="Введите логин">
             <p><span id="LoginMes"></span></p>
             <input type="password" class="form-control" name="password" id="password" placeholder="Введите пароль">
