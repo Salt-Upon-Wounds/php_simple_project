@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require_once "crud.php";
 
@@ -39,6 +40,8 @@ if (isset($post_data->email)) {
 
 if (empty($error)) {
     $db->update($post_data);
+    setcookie("login", $post_data->login, time() + 36000, "/");
+    setcookie("name", $post_data->name, time() + 36000, "/");
 }
 
 echo json_encode($error);

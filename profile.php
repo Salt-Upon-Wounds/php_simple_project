@@ -1,6 +1,12 @@
+<!DOCTYPE html>
 <?php
-//session
+session_start();
+if(!isset($_COOKIE['login']))      
+{
+    header("Location: index.php");
+}
 ?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,11 +20,27 @@
 <body>
 <main>
     <div class="container mt-4">
-        <h1>Приветики конфетики</h1>  
-        
+        <h1>Приветики getCookie("name")</h1>  
+        <button id="logout">Выйти</button>
     </div>
 </main>
 
+<script>
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(";").shift();
+    }
+
+    $("#logout").on("click", function() {
+        $.ajax({
+            url: 'logout.php',
+            success: function(data){
+                    //data returned from php
+            },
+        });
+    });
+</script>
 
 </body>
 

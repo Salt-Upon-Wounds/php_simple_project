@@ -1,5 +1,10 @@
+<!DOCTYPE html>
 <?php
-//session
+session_start();
+if(isset($_COOKIE["login"]))      
+{
+    header("Location: profile.php");
+}
 ?>
 <head>
     <meta charset="UTF-8">
@@ -59,9 +64,10 @@
                 data: JSON.stringify(user), // serializes the form's elements.
                 success: function(data) {
                     //alert(data); // show response from the php script.
-                    console.log(data);
+                    //console.log(data);
                     var response = JSON.parse(data);
-                    console.log(response);
+                    if(response.length == 0) window.location.href = "./profile.php";
+                    //console.log(response);
                     $("#regForm span").each(function( index ) {
                         $( this ).text("");
                     });
