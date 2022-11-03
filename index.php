@@ -23,7 +23,7 @@ if(isset($_COOKIE["login"]))
         <form id="regForm" novalidate>
             <input type="text" class="form-control" name="login" id="login" placeholder="Введите логин">
             <p><span id="loginMes" style="color:red"></span></p>
-            <input type="password" class="form-control" name="password1" id="password1" placeholder="Введите пароль">
+            <input type="password" class="form-control" name="password" id="password" placeholder="Введите пароль">
             <p><span id="passwordMes1" style="color:red"></span></p>
             <input type="password" class="form-control" name="password2" id="password2" placeholder="Введите пароль еще раз">
             <p><span id="passwordMes2" style="color:red"></span></p>
@@ -36,9 +36,9 @@ if(isset($_COOKIE["login"]))
         <h1>Авторизация</h1>  
         <form id="authForm" novalidate>
             <input type="text" class="form-control" name="login" id="login" placeholder="Введите логин">
-            <p><span id="LoginMes"></span></p>
+            <p><span id="loginMes" style="color:red"></span></p>
             <input type="password" class="form-control" name="password" id="password" placeholder="Введите пароль">
-            <p><span id="PasswordMes"></span></p>
+            <p><span id="passwordMes" style="color:red"></span></p>
             <button class="btn btn-success" type="submit">Завершить авторизацию</button>
         </form>
     </div>
@@ -53,7 +53,7 @@ if(isset($_COOKIE["login"]))
             var form = $(this);
             var user = {
                 login: $("#regForm > #login").val(),
-                password1: $("#regForm > #password1").val(),
+                password: $("#regForm > #password").val(),
                 password2: $("#regForm > #password2").val(),
                 name: $("#regForm > #name").val(),
                 email: $("#regForm > #email").val(),
@@ -72,10 +72,40 @@ if(isset($_COOKIE["login"]))
                         $( this ).text("");
                     });
                     $("#regForm #loginMes").text(response["login"]);
-                    $("#regForm #passwordMes1").text(response["password1"]);
+                    $("#regForm #passwordMes1").text(response["password"]);
                     $("#regForm #passwordMes2").text(response["password2"]);
                     $("#regForm #nameMes").text(response["name"]);
                     $("#regForm #emailMes").text(response["email"]);
+                },
+                caches:false,
+            });
+
+        });
+
+        $("#authForm").submit(function(e) {
+
+            e.preventDefault(); // avoid to execute the actual submit of the form.
+
+            var form = $(this);
+            var user = {
+                login: $("#authForm > #login").val(),
+                password: $("#authForm > #password").val(),
+            };
+            $.ajax({
+                type: "POST",
+                url: "php/login.php",
+                data: JSON.stringify(user), // serializes the form's elements.
+                success: function(data) {
+                    //alert(data); // show response from the php script.
+                    //console.log(data);
+                    var response = JSON.parse(data);
+                    if(response.length == 0) window.location.href = "./profile.php";
+                    //console.log(response);
+                    $("#authForm span").each(function( index ) {
+                        $( this ).text("");
+                    });
+                    $("#authForm #loginMes").text(response["login"]);
+                    $("#authForm #passwordMes").text(response["password"]);
                 },
                 caches:false,
             });

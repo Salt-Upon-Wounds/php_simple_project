@@ -17,13 +17,13 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED
             $error["login"] = "login must be unique";
         }
     } 
-    if (isset($post_data->password1)) {
-        if (!preg_match( "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/", $post_data->password1 )) {
-            $error["password1"] = "password must contain numbers and letters nad must be > 5 letters";
+    if (isset($post_data->password)) {
+        if (!preg_match( "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/", $post_data->password )) {
+            $error["password"] = "password must contain numbers and letters nad must be > 5 letters";
         }
     } 
     if (isset($post_data->password2)) {
-        if($post_data->password1 != $post_data->password2) {
+        if($post_data->password != $post_data->password2) {
             $error["password2"] = "wrong";
         }
     } 
@@ -41,7 +41,7 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED
     } 
 
     if (empty($error)) {
-        $post_data->password1 = $db::hash($post_data->password1);
+        $post_data->password = $db::hash($post_data->password);
         unset($post_data->password2);
         $db->update($post_data);
         setcookie("login", $post_data->login, time() + 36000, "/");

@@ -1,14 +1,20 @@
 [
     {
         "login": "aaaaaaa",
-        "password1": "$2y$12$BcIby0DfFFSMfajZ1jj8pesYhWYUQXsSb326.UA2cM0F1VBLeGOFm",
+        "password": "$2y$12$BcIby0DfFFSMfajZ1jj8pesYhWYUQXsSb326.UA2cM0F1VBLeGOFm",
         "name": "asd",
         "email": "asd@asd.asd"
     },
     {
         "login": "aaddddd",
-        "password1": "$2y$12$CK9QA.8QHZl\/2vQ3msu2cuK1nIQFLOXT\/9.YEmEJgBcoZZF5Wz2Va",
+        "password": "$2y$12$CK9QA.8QHZl\/2vQ3msu2cuK1nIQFLOXT\/9.YEmEJgBcoZZF5Wz2Va",
         "name": "jjbbff",
         "email": "ads@asd.ASd"
+    },
+    {
+        "login": "asdsadaa",
+        "password": "$2y$12$fN9VM3kzcEJ19\/MUgs98pu30MFG8XTtp8L2Wfc.p4zYOsSo.q10gi",
+        "name": "bbb",
+        "email": "nnnasd@asd.asd"
     }
 ]
