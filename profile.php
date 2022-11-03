@@ -20,7 +20,7 @@ if(!isset($_COOKIE['login']))
 <body>
 <main>
     <div class="container mt-4">
-        <h1>Приветики getCookie("name")</h1>  
+        <h1></h1>  
         <button id="logout">Выйти</button>
     </div>
 </main>
@@ -40,6 +40,8 @@ if(!isset($_COOKIE['login']))
             },
         });
     });
+
+    $("h1").text("Hello" + getCookie());
 </script>
 
 </body>
