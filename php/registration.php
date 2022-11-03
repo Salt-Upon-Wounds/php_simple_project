@@ -11,6 +11,7 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED
     $error = [];
 
     if (isset($post_data->login)) {
+        $post_data->login = trim($post_data->login);
         if (strlen($post_data->login) < 6) {
             $error["login"] = "login must be > 5 letters";
         } elseif ($db->isUnique($post_data->login, "login")) {
@@ -19,7 +20,7 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED
     } 
     if (isset($post_data->password)) {
         if (!preg_match( "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/", $post_data->password )) {
-            $error["password"] = "password must contain numbers and letters nad must be > 5 letters";
+            $error["password"] = "password must contain numbers and letters and must be > 5 letters\nwithout spaces and special characters";
         }
     } 
     if (isset($post_data->password2)) {
