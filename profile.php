@@ -41,7 +41,7 @@ if(!isset($_COOKIE['login']))
         });
     });
 
-    $("h1").text("Hello" + getCookie());
+    $("h1").text("Hello " + getCookie("name"));
 </script>
 
 </body>
