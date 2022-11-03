@@ -34,9 +34,9 @@ if(!isset($_COOKIE['login']))
 
     $("#logout").on("click", function() {
         $.ajax({
-            url: 'logout.php',
+            url: 'php/logout.php',
             success: function(data){
-                    //data returned from php
+                window.location.href = "./index.php";
             },
         });
     });

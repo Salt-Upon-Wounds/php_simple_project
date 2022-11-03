@@ -1,1 +1,14 @@
-[{"login":"asdasasd","password1":"asd123","password2":"asd123","name":"asdasdsad","email":"asd@asd.asd"}]
+[
+    {
+        "login": "aaaaaaa",
+        "password1": "$2y$12$BcIby0DfFFSMfajZ1jj8pesYhWYUQXsSb326.UA2cM0F1VBLeGOFm",
+        "name": "asd",
+        "email": "asd@asd.asd"
+    },
+    {
+        "login": "aaddddd",
+        "password1": "$2y$12$CK9QA.8QHZl\/2vQ3msu2cuK1nIQFLOXT\/9.YEmEJgBcoZZF5Wz2Va",
+        "name": "jjbbff",
+        "email": "ads@asd.ASd"
+    }
+]
