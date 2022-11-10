@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
     // Если к нам идёт Ajax запрос, то ловим его
     require_once "crud.php";
 
@@ -19,17 +19,17 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED
         }
     } 
     if (isset($post_data->password)) {
-        if (!preg_match( "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/", $post_data->password )) {
+        if (!preg_match("/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/", $post_data->password )) {
             $error["password"] = "password must contain numbers and letters and must be > 5 letters\nwithout spaces and special characters";
         }
     } 
     if (isset($post_data->password2)) {
-        if($post_data->password != $post_data->password2) {
+        if ($post_data->password != $post_data->password2) {
             $error["password2"] = "wrong";
         }
     } 
     if (isset($post_data->name)) {
-        if (!preg_match( "/^[A-Za-z]{2,}$/", $post_data->name )) {
+        if (!preg_match("/^[A-Za-z]{2,}$/", $post_data->name )) {
             $error["name"] = "name must contain letters and must be > 1 letters";
         }
     } 

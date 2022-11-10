@@ -3,8 +3,7 @@
 class CRUD {
     private $db;
 
-    public function __construct($db_adress)
-    {
+    public function __construct($db_adress) {
         if(isset($db_adress)) {
             $this->db = $db_adress;
         }

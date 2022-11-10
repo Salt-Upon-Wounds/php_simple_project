@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
-if(isset($_COOKIE["login"]))      
-{
+if (isset($_COOKIE["login"])) {
     header("Location: profile.php");
 }
 ?>
