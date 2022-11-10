@@ -10,6 +10,8 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTE
     $db = new CRUD("db.json");
     $error = [];
 
+    //проверка существования пользователя
+    //если есть, то создаем куки
     if (isset($post_data->login) && isset($post_data->password)) {
         $all = $db->read();
         foreach ($all as $val) {

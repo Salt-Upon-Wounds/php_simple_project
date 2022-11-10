@@ -47,7 +47,7 @@ if (isset($_COOKIE["login"])) {
     $(document).ready(function() {
         $("#regForm").submit(function(e) {
 
-            e.preventDefault(); // avoid to execute the actual submit of the form.
+            e.preventDefault(); 
 
             var form = $(this);
             var user = {
@@ -60,13 +60,11 @@ if (isset($_COOKIE["login"])) {
             $.ajax({
                 type: "POST",
                 url: "php/registration.php",
-                data: JSON.stringify(user), // serializes the form's elements.
+                data: JSON.stringify(user), 
                 success: function(data) {
-                    //alert(data); // show response from the php script.
-                    //console.log(data);
                     var response = JSON.parse(data);
                     if(response.length == 0) window.location.href = "./profile.php";
-                    //console.log(response);
+                    
                     $("#regForm span").each(function( index ) {
                         $( this ).text("");
                     });
@@ -83,7 +81,7 @@ if (isset($_COOKIE["login"])) {
 
         $("#authForm").submit(function(e) {
 
-            e.preventDefault(); // avoid to execute the actual submit of the form.
+            e.preventDefault();
 
             var form = $(this);
             var user = {
@@ -93,13 +91,11 @@ if (isset($_COOKIE["login"])) {
             $.ajax({
                 type: "POST",
                 url: "php/login.php",
-                data: JSON.stringify(user), // serializes the form's elements.
+                data: JSON.stringify(user), 
                 success: function(data) {
-                    //alert(data); // show response from the php script.
-                    //console.log(data);
                     var response = JSON.parse(data);
                     if(response.length == 0) window.location.href = "./profile.php";
-                    //console.log(response);
+                    
                     $("#authForm span").each(function( index ) {
                         $( this ).text("");
                     });

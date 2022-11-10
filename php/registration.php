@@ -10,6 +10,7 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTE
     $db = new CRUD("db.json");
     $error = [];
 
+    //валидация данных
     if (isset($post_data->login)) {
         $post_data->login = trim($post_data->login);
         if (strlen($post_data->login) < 6) {
@@ -41,6 +42,7 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTE
         }
     } 
 
+    //если данные верные, то заносим их и создаем куки
     if (empty($error)) {
         $post_data->password = $db::hash($post_data->password);
         unset($post_data->password2);
